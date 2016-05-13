@@ -1,0 +1,20 @@
+{% block header %}
+<header>
+    <nav class='menu'>
+        <div class="title">
+            <h1>Carnet d'adresses</h1>
+        </div>
+        <div>
+            <ul>
+                {% if app.user == false %}
+                    <li id="login"><a href="/login"><span class="button">Se Connecter</span></a></li>
+                    <li id="register"><a href="/register"><span class="button">S'inscrire</span></a></li>
+                {% endif %}
+                {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}
+                    <li><a href="/logout"><span class="button">Logout</span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>
+{% endblock %}

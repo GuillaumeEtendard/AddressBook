@@ -1,0 +1,99 @@
+.contactsBlock {
+    border: 1px solid #e67e22;
+    border-radius: 50px;
+    width: 50%;
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+h1 {
+    color: #000000;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: 36px;
+    letter-spacing: 0.2em;
+    line-height: 60px;
+    margin-bottom: 36px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 30px;
+    letter-spacing: -1px;
+    color: #DFBF84;
+    text-transform: uppercase;
+    margin: 10px 0 24px;
+    text-align: center;
+    line-height: 50px;
+}
+
+h3 {
+    color: #000000;
+    font-family: 'Merriweather', serif;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 40px;
+    margin: 0 30px 40px;
+    text-align: center;
+}
+
+.contacts {
+    color: #000000;
+    font-family: 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    text-indent: 30px;
+    margin-bottom: 50px;
+}
+
+a {
+    color: #CCCCCC;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #6c6159
+}
+
+.button {
+    background: #fe921f;
+    color: #ffffff;
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 12px;
+    letter-spacing: 1px;
+    margin: 0 0 30px;
+    padding: 10px 15px 8px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.menu {
+    text-align: center;
+}
+
+.addContact{
+    text-align: center;
+}
+
+.titleLink{
+    text-decoration: none;
+    color: inherit;
+}
+
+.titleLink:hover{
+    text-decoration: none;
+    color: inherit;
+}
+
+.center{
+    display: block;
+    margin: 20px;
+    text-align: center;
+}

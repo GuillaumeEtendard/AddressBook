@@ -1,0 +1,38 @@
+EntitiesBundle\Entity\Contacts:
+    type: entity
+    table: null
+    repositoryClass: EntitiesBundle\Repository\ContactsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        firstName:
+            type: string
+            length: 255
+        lastName:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        address:
+            type: text
+        phoneNumber:
+            type: string
+            length: 255
+            column: phone_number
+        webSite:
+            type: string
+            length: 255
+            column: web_site
+
+    manyToOne:
+      user_id:
+        targetEntity: User
+        joinColumn:
+            name: user_id
+            referencedColumnName: id
+    lifecycleCallbacks: {  }

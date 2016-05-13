@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="contactsBlock">
+        <h1>Modifier Contact</h1>
+
+        {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input class="button" type="submit" value="Edit"/>
+        {{ form_end(edit_form) }}
+
+        <div class="center">
+            {{ form_start(delete_form) }}
+            <input class="button" type="submit" value="Supprimer contact">
+            {{ form_end(delete_form) }}
+        </div>
+        <div class="center">
+            <a href="{{ path('contacts_index') }}"><span class="button">Revenir à la liste des contacts</span></a>
+        </div>
+    </div>
+{% endblock %}

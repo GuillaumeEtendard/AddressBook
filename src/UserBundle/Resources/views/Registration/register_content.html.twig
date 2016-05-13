@@ -1,0 +1,31 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register form'}}) }}
+<fieldset class="borderForm">
+    <p class="formTitle">S'inscrire</p>
+    <div class="inputBlock">
+        {{ form_label(form.username) }}
+        {{ form_errors(form.username) }}
+        {{ form_widget(form.username) }}
+    </div>
+
+    <div class="inputBlock">
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email) }}
+    </div>
+
+    <div class="inputBlock">
+        {{ form_errors(form.plainPassword) }}
+        {{ form_widget(form.plainPassword) }}
+    </div>
+
+
+    <div class="inputBlock">
+        <input type="submit" class="button" value="{{ 'registration.submit'|trans }}"/>
+    </div>
+    <p class="signUp">Vous possédez deja un compte ? <a href="/login">Se connecter</a></p>
+</fieldset>
+{{ form_end(form) }}
+
+

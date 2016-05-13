@@ -1,0 +1,75 @@
+.form {
+    width: 25%;
+    margin: 0 auto;
+}
+fieldset{
+    padding: 15px;
+}
+input[type='text'],input[type='password'],input[type='email'],input[type='url'] {
+    margin: 10px auto;
+    display: block;
+    height: 40px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #bdc3c7;
+}
+input[type='submit']{
+    margin: 0 auto;
+    display: block;
+}
+.formTitle {
+    text-align: center;
+    font-size: 40px;
+    margin: 0 0 20px 0;
+    position: relative;
+}
+
+.borderForm {
+    border: 1px solid #3498db;
+}
+
+label {
+    margin:  0 0 0 0;
+    text-align: center;
+    display: block;
+}
+
+
+.signUp,
+.forgotPassword {
+    text-align: center;
+}
+
+.signUp {
+    margin: 20px 0 0 0;
+}
+
+.forgotPassword {
+    margin: 5px 0 40px 0;
+}
+
+.signUp a,
+.forgotPassword a {
+    text-decoration: none;
+}
+.inputBlock{
+    text-align: center;
+}
+
+/* Error Messages */
+.inputTxtError {
+    border: 1px solid #ff0000 !important;
+}
+.error {
+    color: #ff0000;
+    font-size: 100%;
+    margin: 10px;
+    text-align: center;
+}
+
+.form ul li{
+    color: #ff0000;
+    font-size: 100%;
+    margin: 10px;
+    text-align: center;
+}

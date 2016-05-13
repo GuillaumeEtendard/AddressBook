@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="contactsBlock">
+        <h3>{{ contacts.firstName }} {{ contacts.lastName }}</h3>
+
+        <ul class="contacts">
+            <li> Prénom : {{ contacts.firstName }} </li>
+            <li> Nom de famille : {{ contacts.lastName }} </li>
+            <li> Email : {{ contacts.email }} </li>
+            <li> Adresse : {{ contacts.address }} </li>
+            <li> Téléphone : {{ contacts.phoneNumber }} </li>
+            <li> Site Web : {{ contacts.webSite }} </li>
+        </ul>
+        <div class="center">
+            <a href="{{ path('contacts_edit', { 'id': contacts.id }) }}"><span
+                        class="button">Modifier Contact</span></a>
+        </div>
+        <div class="center">
+            {{ form_start(delete_form) }}
+            <input class="button" type="submit" value="Supprimer Contact">
+            {{ form_end(delete_form) }}
+        </div>
+        <div class="center">
+
+            <a href="{{ path('contacts_index') }}"><span class="button">Revenir à la liste des contacts</span></a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'ContactsBundle:Contacts:header.html.twig' %}
+    {% if contacts %}
+        <div class="contactsBlock">
+        <h2>Contacts</h2>
+        {% for contact in contacts %}
+            <ul class="contacts">
+                <li>{{ contact.firstName }} {{ contact.lastName }}</li>
+                <li>
+                    <ul>
+                        <li>
+                            <a href="{{ path('contacts_show', { 'id': contact.id }) }}">Voir</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contacts_edit', { 'id': contact.id }) }}">Modifier</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        {% endfor %}
+    {% endif %}
+    {% if ((is_granted("IS_AUTHENTICATED_REMEMBERED")) or (is_granted("IS_AUTHENTICATED_FULLY"))) %}
+        <div class="addContact">
+            <a href="{{ path('contacts_new') }}"><span class="button">Ajouter un nouveau contact</span></a>
+        </div>
+    {% endif %}
+
+    </div>
+{% endblock %}
