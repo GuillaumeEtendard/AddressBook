@@ -221,4 +221,87 @@ class Contacts
     {
         return $this->user_id;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $users;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add users
+     *
+     * @param \EntitiesBundle\Entity\User $users
+     * @return Contacts
+     */
+    public function addUser(\EntitiesBundle\Entity\User $users)
+    {
+        $this->users[] = $users;
+
+        return $this;
+    }
+
+    /**
+     * Remove users
+     *
+     * @param \EntitiesBundle\Entity\User $users
+     */
+    public function removeUser(\EntitiesBundle\Entity\User $users)
+    {
+        $this->users->removeElement($users);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $groups;
+
+
+    /**
+     * Add groups
+     *
+     * @param \EntitiesBundle\Entity\User $groups
+     * @return Contacts
+     */
+    public function addGroup(\EntitiesBundle\Entity\User $groups)
+    {
+        $this->groups[] = $groups;
+
+        return $this;
+    }
+
+    /**
+     * Remove groups
+     *
+     * @param \EntitiesBundle\Entity\User $groups
+     */
+    public function removeGroup(\EntitiesBundle\Entity\User $groups)
+    {
+        $this->groups->removeElement($groups);
+    }
+
+    /**
+     * Get groups
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroups()
+    {
+        return $this->groups;
+    }
 }

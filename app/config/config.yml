@@ -32,7 +32,7 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
-
+    serializer: true
 
 # Twig Configuration
 twig:
@@ -73,3 +73,8 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: EntitiesBundle\Entity\User
+
+fos_rest:
+    routing_loader:
+        default_format: json                            # All responses should be JSON formated
+        include_format: false                           # We do not include format in request, so that all responses

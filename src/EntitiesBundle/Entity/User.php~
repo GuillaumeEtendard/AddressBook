@@ -23,4 +23,42 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $Contacts;
+
+
+    /**
+     * Add Contacts
+     *
+     * @param \EntitiesBundle\Entity\Contacts $contacts
+     * @return User
+     */
+    public function addContact(\EntitiesBundle\Entity\Contacts $contacts)
+    {
+        $this->Contacts[] = $contacts;
+
+        return $this;
+    }
+
+    /**
+     * Remove Contacts
+     *
+     * @param \EntitiesBundle\Entity\Contacts $contacts
+     */
+    public function removeContact(\EntitiesBundle\Entity\Contacts $contacts)
+    {
+        $this->Contacts->removeElement($contacts);
+    }
+
+    /**
+     * Get Contacts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContacts()
+    {
+        return $this->Contacts;
+    }
 }

@@ -22,3 +22,6 @@ contacts_delete:
     path:     /{id}/delete
     defaults: { _controller: "ContactsBundle:Contacts:delete" }
     methods:  DELETE
+user_show:
+    path:     /addUser
+    defaults: { _controller: ContactsBundle:User:showUser }

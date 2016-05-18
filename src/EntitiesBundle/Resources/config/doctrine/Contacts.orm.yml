@@ -29,10 +29,4 @@ EntitiesBundle\Entity\Contacts:
             length: 255
             column: web_site
 
-    manyToOne:
-      user_id:
-        targetEntity: User
-        joinColumn:
-            name: user_id
-            referencedColumnName: id
     lifecycleCallbacks: {  }

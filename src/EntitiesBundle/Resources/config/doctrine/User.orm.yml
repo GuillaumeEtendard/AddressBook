@@ -9,4 +9,17 @@ EntitiesBundle\Entity\User:
             generator:
                 strategy: AUTO
 
+    manyToMany:
+      Contacts:
+        targetEntity: Contacts
+        joinTable:
+          name: users_contacts
+          joinColumns:
+            user_id:
+             referencedColumnName: id
+          inverseJoinColumns:
+           contact_id:
+             referencedColumnName: id
+
+
     lifecycleCallbacks: {  }

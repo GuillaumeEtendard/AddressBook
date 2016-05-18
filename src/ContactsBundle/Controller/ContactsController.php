@@ -4,7 +4,13 @@ namespace ContactsBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
+use EntitiesBundle\Entity\User;
 use EntitiesBundle\Entity\Contacts;
 use ContactsBundle\Form\ContactsType;
 
@@ -20,12 +26,23 @@ class ContactsController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
+        $person = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('EntitiesBundle:User')
+            ->find($user);
+        if($person) {
+            $contact = $person->getContacts();
+            $encoders = array(new XmlEncoder(), new JsonEncoder());
+            $normalizers = array(new ObjectNormalizer());
 
-        $contacts = $em->getRepository('EntitiesBundle:Contacts')->findBy(
-            array('user_id' => $user)
-        );
+            $serializer = new Serializer($normalizers, $encoders);
+            $contactContent = $serializer->serialize($contact, 'json');
+            $contacts = $serializer->decode($contactContent, 'json');
+        }else{
+            $contacts = [];
+        }
 
         return $this->render('ContactsBundle:Contacts:index.html.twig', array(
             'contacts' => $contacts,
@@ -45,7 +62,12 @@ class ContactsController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $user = $this->container->get('security.context')->getToken()->getUser();
-            $contact->setUserId($user);
+            $a = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('EntitiesBundle:User')
+                ->find($user);
+            $addContact = $a->addContact($contact);
             $em->persist($contact);
             $em->flush();
 
@@ -64,11 +86,7 @@ class ContactsController extends Controller
      */
     public function showAction(Contacts $contacts)
     {
-        $user = $this->container->get('security.context')->getToken()->getUser();
 
-        if($user->getId() !== $contacts->getUserId()->getId()){
-            return $this->redirectToRoute('contacts_index');
-        }
         $deleteForm = $this->createDeleteForm($contacts);
 
         return $this->render('ContactsBundle:Contacts:show.html.twig', array(
@@ -132,7 +150,6 @@ class ContactsController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('contacts_delete', array('id' => $contacts->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-            ;
+            ->getForm();
     }
 }

@@ -3,10 +3,11 @@
 {% block body %}
     <h1>Ajouter contact</h1>
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input class="button" type="submit" value="Ajouter"/>
+    {{ form_widget(form) }}
+    <input class="button" type="submit" value="Ajouter"/>
     {{ form_end(form) }}
+
     <div class="center">
         <a href="{{ path('contacts_index') }}"><span class="button">Revenir à la liste des contacts</span></a>
-        </div>
+    </div>
 {% endblock %}
